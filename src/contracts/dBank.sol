@@ -12,6 +12,7 @@ contract dBank {
   //add mappings
   mapping(address => uint) public etherBalanceOf;
   mapping(address => uint) public depositStart;
+  mapping(address => bool) public isDeposited;
 
   //add events
 
@@ -32,6 +33,7 @@ contract dBank {
     //start msg.sender hodling time
 
     //set msg.sender deposit status to true
+    isDeposited[msg.sender] = true; //activate deposit status
     //emit Deposit event
   }
 
