@@ -10,18 +10,23 @@ contract dBank {
   //assign Token contract to variable
 
   //add mappings
+  mapping(address => uint) public etherBalanceOf;
+  mapping(address => uint) public depositStart;
 
   //add events
 
   //pass as constructor argument deployed Token contract
   constructor(Token _token) public {
-    token = _token:
+    token = _token;
     //assign token deployed contract to variable
   }
 
   function deposit() payable public {
     //check if msg.sender didn't already deposited funds
     //check if msg.value is >= than 0.01 ETH
+
+    etherBalanceOf[msg.sender] = etherBalanceOf[msg.sender] + msg.value;
+    depositStart[msg.sender] =depositStart[msg.sender] + block.timestamp;
 
     //increase msg.sender ether deposit balance
     //start msg.sender hodling time
